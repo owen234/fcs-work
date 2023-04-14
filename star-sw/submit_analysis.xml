@@ -1,0 +1,51 @@
+<job  name="Analysis"  simulateSubmission="false" maxFilesPerProcess="20" >
+
+    <input URL="filelist:/star/u/owenl/fwd-tracking-2023-03-09/analysis-jobs/joblist.txt"/>
+
+    <stdout URL="file:/star/data05/pwg/owenl/scratch-analysis/log/log_$JOBID.log" />
+    <stderr URL="file:/star/data05/pwg/owenl/scratch-analysis/log/err_$JOBID.err" />
+
+    <output fromScratch="*.root" toURL="file:/star/data05/pwg/owenl/scratch-analysis/" />
+
+    <command>
+        setup 64b
+        starver dev config/v0.2.3-rhel7-root5.34.38-64b
+        module load zlib-1.2.12
+        ps
+        echo "Setting up root 6.24"
+        source /cvmfs/star.sdcc.bnl.gov/star-spack/spack/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/root-6.24.06-y34zf6srxhklcd2sscedjo5wvimaogkp/bin/thisroot.csh
+        echo "which root returns this"
+        which root
+        echo "JOBINDEX = ${JOBINDEX}"
+        echo "JOBID = ${JOBID}"
+        echo "INPUTFILE = ${INPUTFILE0}"
+        /bin/ls -1
+        echo "cat of filelist : ${FILELIST}"
+        cat ${FILELIST}
+
+        echo "running root now"
+
+        cd analysis-jobs
+        pwd
+        /bin/ls -1
+
+        root -b -q 'job_wrapper.c("'${FILELIST}'",'${JOBINDEX}')'
+
+        /bin/ls -l
+        echo "moving root files one directory down"
+        mv *.root ../
+        cd ../
+
+
+    </command>
+
+    <SandBox>
+        <Package>
+            <File>file:./analysis-jobs</File>
+        </Package>
+    </SandBox>
+
+    <Generator>
+        <Location>/star/data05/pwg/owenl/scratch-analysis/job</Location>
+    </Generator>
+</job>

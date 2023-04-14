@@ -1,0 +1,5 @@
+/star/data05/pwg/owenl/reco-batch-output-200x100-mb-mufilter-2023-04-04a/pythia_0_fwdtree.root
+/star/data05/pwg/owenl/reco-batch-output-200x100-mb-mufilter-2023-04-04a/pythia_100_fwdtree.root
+/star/data05/pwg/owenl/reco-batch-output-200x100-mb-mufilter-2023-04-04a/pythia_101_fwdtree.root
+/star/data05/pwg/owenl/reco-batch-output-200x100-mb-mufilter-2023-04-04a/pythia_102_fwdtree.root
+/star/data05/pwg/owenl/reco-batch-output-200x100-mb-mufilter-2023-04-04a/pythia_103_fwdtree.root

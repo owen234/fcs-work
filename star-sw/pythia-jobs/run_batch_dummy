@@ -1,0 +1,12 @@
+nEvents=100
+
+fzd=$1
+jobId=$2
+
+
+echo root4star -b -q -l 'runPythia.C('"${nEvents}"',"'"${jobId}"'")'
+#time root4star -b -q -l 'runPythia.C('"${nEvents}"',"'"${jobId}"'")'
+
+#mv full_track.root pythia_${jobId}_qa.root
+#mv fwdtree.root pythia_${jobId}_fwdtree.root
+

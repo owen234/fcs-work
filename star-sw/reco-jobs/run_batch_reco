@@ -1,0 +1,11 @@
+nEvents=1000
+
+inputfile=$1
+jobIndex=$2
+
+echo root4star -b -q -l 'reco-jobs/fwd_tracking.C( '"${nEvents}"', "'"${inputfile}"'", "reco-jobs/full_track.xml" )'
+time root4star -b -q -l 'reco-jobs/fwd_tracking.C( '"${nEvents}"', "'"${inputfile}"'", "reco-jobs/full_track.xml" )'
+
+mv fwdtree.root pythia_${jobIndex}_fwdtree.root
+mv full_track.root pythia_${jobIndex}_full_track.root
+

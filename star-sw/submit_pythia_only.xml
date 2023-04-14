@@ -1,0 +1,33 @@
+<job  name="PythiaOnly"  simulateSubmission="false" maxFilesPerProcess="1" filesPerHour="50" >
+
+    <input URL="filelist:/star/u/owenl/fwd-tracking-2023-03-09/pythia-jobs/joblist.txt"/>
+
+    <stdout URL="file:/star/data05/pwg/owenl/scratch/log-gen/log_$JOBID.log" />
+    <stderr URL="file:/star/data05/pwg/owenl/scratch/log-gen/err_$JOBID.err" />
+
+    <output fromScratch="*.fzd" toURL="file:/star/data05/pwg/owenl/scratch/" />
+
+    <command>
+        setup 64b
+        starver dev config/v0.2.3-rhel7-root5.34.38-64b
+        module load zlib-1.2.12
+        echo "JOBINDEX = ${JOBINDEX}"
+        echo "JOBID = ${JOBID}"
+        echo "INPUTFILE = ${INPUTFILE0}"
+        ls -1
+
+        ./pythia-jobs/run_batch_pythia_gen $JOBINDEX
+    </command>
+
+    <SandBox>
+        <Package>
+            <File>file:./StRoot</File>
+            <File>file:./.sl73_x8664_gcc485</File>
+            <File>file:./pythia-jobs</File>
+        </Package>
+    </SandBox>
+
+    <Generator>
+        <Location>/star/data05/pwg/owenl/scratch/gen</Location>
+    </Generator>
+</job>

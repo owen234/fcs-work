@@ -1,0 +1,17 @@
+nEvents=100
+
+jobIndex=$1
+
+
+#### -- with muon filter
+echo root4star -b -q -l 'pythia-jobs/runPythia.C( '"${nEvents}"', '"${jobIndex}"', 1 )'
+time root4star -b -q -l 'pythia-jobs/runPythia.C( '"${nEvents}"', '"${jobIndex}"', 1 )'
+
+#### -- no muon filter
+#echo root4star -b -q -l 'pythia-jobs/runPythia.C( '"${nEvents}"', '"${jobIndex}"', 0 )'
+#time root4star -b -q -l 'pythia-jobs/runPythia.C( '"${nEvents}"', '"${jobIndex}"', 0 )'
+
+
+#mv full_track.root pythia_${jobId}_qa.root
+#mv fwdtree.root pythia_${jobId}_fwdtree.root
+
